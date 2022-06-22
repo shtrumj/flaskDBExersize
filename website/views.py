@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, request, flash,url_for
+from flask import Blueprint, render_template, request, flash,url_for, redirect
 from dbModel import Users
-from forms import RegisterUsers
+from forms import RegisterUsers,Employees
 from website.extensions import db
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 Myviews = Blueprint("Myviews", __name__, template_folder="../website/templates", static_folder="../website/static")
@@ -17,6 +18,9 @@ def Register():
         password2 = request.form.get('signuppassword2')
         if password != password2:
             error= 'Passwords do not match'
+            redirect({{ url_for('Register')}})
+
+
         email = request.form.get('signupemail')
         new_user = Users(username=username, password=password, email=email)
         db.session.add(new_user)
@@ -24,3 +28,8 @@ def Register():
 
     return render_template('Login.html', form=form, error=error)
 
+
+@Myviews.route('/employees', methods=['GET','POST'])
+def employees():
+    form = Employees()
+    return  render_template('employees.html', form=form )

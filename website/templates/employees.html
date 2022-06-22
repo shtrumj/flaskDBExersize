@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% block title %}AddAnEmplyee{% endblock %}
+{%  block css %}<link rel="stylesheet" href="../static/forms.css">{% endblock %}
+{%  block content %}
+
+<h1>Add an Employees</h1>
+   <form method="post">
+        <div class="generic-wrap">
+            <div class="generic-form">
+                <div class="sign-in-html">
+                    <div class="group">
+                        {{ form.hidden_tag()  }}
+                        {{ form.firstName.label(class_="label") }}
+                        {{  form.firstName(class_="input")}}
+                    </div>
+                    <div class="group">
+                        {{ form.lastName.label(class_="label") }}
+                        {{ form.lastName(class_="input")}}
+                    </div>
+                    <div class="group">
+                        {{ form.phoneNumber.label(class_="label") }}
+                        {{ form.phoneNumber(class_="input")}}
+                    </div>
+                    <div class="group">
+                        {{ form.birthday.label(class_="label") }}
+                        {{ form.birthday(class_="input")}}
+                    </div>
+                    <div class="group">
+                        {{ form.submit(class_="submit")}}
+                    </div>
+                </div>
+            </div>
+        </div>
+   </form>
+{% endblock content %}
+
+
