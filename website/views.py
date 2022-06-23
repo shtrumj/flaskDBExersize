@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, request, flash,url_for, redirect
-from website.dbModel import Users
-from website.forms import RegisterUsers,Employees
+from website.dbModel import Users, Employees
+from website.forms import RegisterUsers, EmployeesForm
 from website.extensions import db
+from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -31,5 +32,14 @@ def Register():
 
 @Myviews.route('/employees', methods=['GET','POST'])
 def employees():
-    form = Employees()
-    return  render_template('employees.html', form=form )
+    form = EmployeesForm()
+    if request.method == 'POST':
+        firstName = request.form.get('firstName')
+        lastName = request.form.get('lastName')
+        cellPhoneNumber = request.form.get('phoneNumber')
+        emailAddress = request.form.get('emailAddress')
+        birthday = request.form.get('birthday')
+        new_emp = Employees(firstName=firstName, lastName=lastName, cellPhoneNumber=cellPhoneNumber, emailAddress=emailAddress, birthday=birthday)
+        db.session.add(new_emp)
+        db.session.commit()
+    return render_template('employees.html', form=form )

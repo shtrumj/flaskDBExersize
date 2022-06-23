@@ -11,9 +11,10 @@ class RegisterUsers(FlaskForm):
     signup = SubmitField()
 
 
-class Employees(FlaskForm):
+class EmployeesForm(FlaskForm):
     firstName = StringField('First name', [validators.length(min=3, max=10)])
     lastName = StringField('Last name', [validators.length(min=3, max=10)])
-    birthday = DateField('Your Birthday', format='%d/%m/%y')
-    phoneNumber = StringField('Phone Number',[validators.length(max=11)])
+    emailAddress = StringField('email address', [validators.length(min=3, max=25)])
+    birthday = StringField('Your Birthday', [validators.length(max=20)])
+    phoneNumber = StringField('Phone Number', [validators.length(max=11)])
     submit = SubmitField('Create a new Employee')

@@ -3,7 +3,7 @@
 {%  block css %}<link rel="stylesheet" href="../static/forms.css">{% endblock %}
 {%  block content %}
 
-<h1>Add an Employees</h1>
+<h1>Add an Employee</h1>
    <form method="post">
         <div class="generic-wrap">
             <div class="generic-form">
@@ -16,6 +16,10 @@
                     <div class="group">
                         {{ form.lastName.label(class_="label") }}
                         {{ form.lastName(class_="input")}}
+                    </div>
+                    <div class="group">
+                        {{ form.emailAddress.label(class_="label") }}
+                        {{ form.emailAddress(class_="input")}}
                     </div>
                     <div class="group">
                         {{ form.phoneNumber.label(class_="label") }}
