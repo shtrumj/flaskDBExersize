@@ -1,7 +1,8 @@
 from flask import Flask, blueprints
 from flask_sqlalchemy import SQLAlchemy
 from .extensions import db
-from .views import  Myviews
+from .views import Myviews
+from flask_migrate import Migrate
 
 
 def create_app():
@@ -11,4 +12,5 @@ def create_app():
     app.config['SECRET_KEY'] = '4bafa7a5ae1d045970fba2b6'
     app.register_blueprint(Myviews)
     db.init_app(app)
+    Migrate(app,db)
     return app

@@ -29,3 +29,16 @@ class Sites(Base):
         self.domain = domain
 
 
+class Employees(Base):
+    firstName = db.Column(db.String(20))
+    lastName = db.Column(db.String(20))
+    emailAddress = db.Column(db.String(20))
+    cellPhoneNumber = db.Column(db.String(20))
+    birthday = db.Column(db.DateTime)
+
+    def __init__(self, firstName, lastName, emailAddress, cellPhoneNumber, birthday):
+        self.firstName = firstName
+        self.lastName = lastName
+        self.emailAddress = emailAddress
+        self.cellPhoneNumber = cellPhoneNumber
+        self.birthday = birthday
