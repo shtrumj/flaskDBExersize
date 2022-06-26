@@ -3,7 +3,10 @@ from wtforms.fields import DateField, DateTimeField
 from flask_wtf import FlaskForm
 
 
+
 class RegisterUsers(FlaskForm):
+    signinusername = StringField('Username', [validators.Length(min=4, max=25)])
+    signinpassword = PasswordField('Password')
     signupusername = StringField('Username', [validators.Length(min=4, max=25)])
     signupemail = StringField('Email',[validators.length(min=6, max=30)])
     signuppassword = PasswordField('Password')

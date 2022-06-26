@@ -1,6 +1,7 @@
 from website.extensions import db
 
 
+
 class Base(db.Model):
     __abstract__= True
     id = db.Column(db.Integer, primary_key=True)
@@ -12,7 +13,7 @@ class Base(db.Model):
 class Users(Base):
     username = db.Column(db.String(20))
     email = db.Column(db.String(30))
-    password = db.Column(db.String(80))
+    password = db.Column(db.String(180))
 
     def __init__(self, username, email, password):
         self.username = username
